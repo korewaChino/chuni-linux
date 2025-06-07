@@ -14,8 +14,8 @@ OVL_MERGED=ovlfs/mount
 mkdir -p $OVL_MERGED $RW_LAYER $OVL_WORK
 
 function list_layers() {
-    # list directories in $LAYERS
-    ls -d $LAYERS/*| xargs -I{} realpath {} | sort
+    # Only include directories in $LAYERS
+    find "$LAYERS" -mindepth 1 -maxdepth 1 -type d | xargs -I{} realpath {} | sort
 }
 
 # This should accept a list of layers and mount them in $OVL_MERGED, the first argument being the bottom layer
@@ -28,7 +28,7 @@ function overlay() {
     local final=$(realpath "$OVL_MERGED")
     local work=$(realpath "$OVL_WORK")
 
-    sudo mount -v -t overlay overlay -o \
+    sudo mount -vvv -t overlay overlay -o \
         lowerdir="$layers",upperdir="$rw_layer",workdir="$work" "$final"
 }
 
