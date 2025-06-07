@@ -1,0 +1,5 @@
+*.zip
+*.exe
+*.7z
+assets/**
+wineprefix*
