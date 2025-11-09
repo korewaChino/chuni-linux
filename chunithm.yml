@@ -1,0 +1,36 @@
+name: CHUNITHM
+game_slug: chunithm
+version: Runtime
+slug: chuni-runtime
+install_complete_text: "To complete installation, please browse the game files and edit segatools.ini to configure your game directories."
+runner: wine
+script:
+  game:
+    exe: $GAMEDIR/App/bin/start.bat
+    prefix: $GAMEDIR/pfx
+    working_dir: $GAMEDIR/App/bin
+  files:
+    - segatools: https://gitea.tendokyu.moe/TeamTofuShop/segatools/releases/download/latest/segatools.zip
+    - patched_bin: "N/A:Path to unencrypted game binary (App/bin/chusanapp.exe)"
+    - patched_amdaemon: "N/A:Path to unencrypted AMdaemon (App/bin/amdaemon.exe)"
+  installer:
+    - task:
+        name: winetricks
+        app: vcrun2012
+        silent: true
+    - extract:
+        file: segatools
+        dst: $GAMEDIR/segatools
+    - extract:
+        file: $GAMEDIR/segatools/chusan.zip
+        dst: $GAMEDIR/App/bin
+    - copy:
+        src: patched_bin
+        dst: $GAMEDIR/App/bin/
+    - copy:
+        src: patched_amdaemon
+        dst: $GAMEDIR/App/bin/
+  wine:
+    audio: alsa
+    # pick ur own wine build bruh
+    # version: wine-10.8-staging-x86_64
