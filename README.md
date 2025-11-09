@@ -1,6 +1,7 @@
 # CHUNITHM on Proton
 
-> [!note] For new and returning users
+> [!NOTE]
+> For new and returning users
 >
 > If you're looking for the old legacy guide with the prototype [Stratum](https://github.com/FyraLabs/stratum) script, that one can be found [here](./legacy/README.md).
 > For less literate users who just want a mutable layer of the game running on Wine, this is the guide for you!
