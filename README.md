@@ -13,6 +13,8 @@ Despite being a Windows-exclusive, proprietary arcade-only game, CHUNITHM can st
 
 - Wine 10 or later
 - Winetricks
+- Visual C++ 2012 Redistributable (vcrun2012)
+- segatools (for dongle DRM bypass)
 
 ## Setup
 
