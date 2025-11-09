@@ -17,7 +17,7 @@ script:
     - task:
         name: winetricks
         app: vcrun2012
-        silent: true
+        silent: false
     - extract:
         file: segatools
         dst: $GAMEDIR/segatools
